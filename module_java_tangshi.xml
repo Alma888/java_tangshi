@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="module_java_tangshi" default="compile.module.java_tangshi">
+    <dirname property="module.java_tangshi.basedir" file="${ant.file.module_java_tangshi}"/>
+
+    <property name="module.jdk.home.java_tangshi" value="${project.jdk.home}"/>
+    <property name="module.jdk.bin.java_tangshi" value="${project.jdk.bin}"/>
+    <property name="module.jdk.classpath.java_tangshi" value="${project.jdk.classpath}"/>
+
+    <property name="compiler.args.java_tangshi" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+
+    <property name="java_tangshi.output.dir" value="${module.java_tangshi.basedir}/target/classes"/>
+    <property name="java_tangshi.testoutput.dir" value="${module.java_tangshi.basedir}/target/test-classes"/>
+
+    <path id="java_tangshi.module.bootclasspath">
+        <!-- Paths to be included in compilation bootclasspath -->
+    </path>
+
+    <path id="java_tangshi.module.production.classpath">
+        <path refid="${module.jdk.classpath.java_tangshi}"/>
+        <path refid="library.maven:_mysql:mysql-connector-java:5.1.47.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+        <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.9.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-text:1.7.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+        <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.36.0.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:neko-htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xerces:xercesimpl:2.12.0.classpath"/>
+        <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0.classpath"/>
+        <path refid="library.maven:_commons-io:commons-io:2.6.classpath"/>
+        <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+        <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+        <path refid="library.maven:_org.brotli:dec:0.1.2.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-xml:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.ansj:ansj_seg:5.1.6.classpath"/>
+        <path refid="library.maven:_org.nlpcn:nlp-lang:1.7.7.classpath"/>
+        <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+        <path refid="library.maven:_com.alibaba:fastjson:1.2.62.classpath"/>
+    </path>
+
+    <path id="java_tangshi.runtime.production.module.classpath">
+        <pathelement location="${java_tangshi.output.dir}"/>
+        <path refid="library.maven:_mysql:mysql-connector-java:5.1.47.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+        <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.9.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-text:1.7.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+        <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.36.0.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:neko-htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xerces:xercesimpl:2.12.0.classpath"/>
+        <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0.classpath"/>
+        <path refid="library.maven:_commons-io:commons-io:2.6.classpath"/>
+        <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+        <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+        <path refid="library.maven:_org.brotli:dec:0.1.2.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-xml:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.ansj:ansj_seg:5.1.6.classpath"/>
+        <path refid="library.maven:_org.nlpcn:nlp-lang:1.7.7.classpath"/>
+        <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+        <path refid="library.maven:_com.alibaba:fastjson:1.2.62.classpath"/>
+    </path>
+
+    <path id="java_tangshi.module.classpath">
+        <path refid="${module.jdk.classpath.java_tangshi}"/>
+        <pathelement location="${java_tangshi.output.dir}"/>
+        <path refid="library.maven:_mysql:mysql-connector-java:5.1.47.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+        <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.9.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-text:1.7.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+        <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.36.0.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:neko-htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xerces:xercesimpl:2.12.0.classpath"/>
+        <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0.classpath"/>
+        <path refid="library.maven:_commons-io:commons-io:2.6.classpath"/>
+        <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+        <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+        <path refid="library.maven:_org.brotli:dec:0.1.2.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-xml:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.ansj:ansj_seg:5.1.6.classpath"/>
+        <path refid="library.maven:_org.nlpcn:nlp-lang:1.7.7.classpath"/>
+        <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+        <path refid="library.maven:_com.alibaba:fastjson:1.2.62.classpath"/>
+    </path>
+
+    <path id="java_tangshi.runtime.module.classpath">
+        <pathelement location="${java_tangshi.testoutput.dir}"/>
+        <pathelement location="${java_tangshi.output.dir}"/>
+        <path refid="library.maven:_mysql:mysql-connector-java:5.1.47.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xalan:xalan:2.7.2.classpath"/>
+        <path refid="library.maven:_xalan:serializer:2.7.2.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-lang3:3.9.classpath"/>
+        <path refid="library.maven:_org.apache.commons:commons-text:1.7.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpmime:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+        <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+        <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.36.0.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:neko-htmlunit:2.36.0.classpath"/>
+        <path refid="library.maven:_xerces:xercesimpl:2.12.0.classpath"/>
+        <path refid="library.maven:_xml-apis:xml-apis:1.4.01.classpath"/>
+        <path refid="library.maven:_net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0.classpath"/>
+        <path refid="library.maven:_commons-io:commons-io:2.6.classpath"/>
+        <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+        <path refid="library.maven:_commons-net:commons-net:3.6.classpath"/>
+        <path refid="library.maven:_org.brotli:dec:0.1.2.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-client:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-http:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-xml:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-util:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty:jetty-io:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813.classpath"/>
+        <path refid="library.maven:_org.ansj:ansj_seg:5.1.6.classpath"/>
+        <path refid="library.maven:_org.nlpcn:nlp-lang:1.7.7.classpath"/>
+        <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+        <path refid="library.maven:_com.alibaba:fastjson:1.2.62.classpath"/>
+    </path>
+
+
+    <patternset id="excluded.from.module.java_tangshi">
+        <patternset refid="ignored.files"/>
+    </patternset>
+
+    <patternset id="excluded.from.compilation.java_tangshi">
+        <patternset refid="excluded.from.module.java_tangshi"/>
+    </patternset>
+
+    <path id="java_tangshi.module.sourcepath">
+        <dirset dir="${module.java_tangshi.basedir}">
+            <include name="src/main/java"/>
+            <include name="src/main/resources"/>
+        </dirset>
+    </path>
+
+    <path id="java_tangshi.module.test.sourcepath">
+        <dirset dir="${module.java_tangshi.basedir}">
+            <include name="src/test/java"/>
+        </dirset>
+    </path>
+
+
+    <target name="compile.module.java_tangshi" depends="compile.module.java_tangshi.production,compile.module.java_tangshi.tests" description="Compile module java_tangshi"/>
+
+    <target name="compile.module.java_tangshi.production" depends="register.custom.compilers" description="Compile module java_tangshi; production classes">
+        <mkdir dir="${java_tangshi.output.dir}"/>
+        <javac2 destdir="${java_tangshi.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.java_tangshi}/javac">
+            <compilerarg line="${compiler.args.java_tangshi}"/>
+            <bootclasspath refid="java_tangshi.module.bootclasspath"/>
+            <classpath refid="java_tangshi.module.production.classpath"/>
+            <src refid="java_tangshi.module.sourcepath"/>
+            <patternset refid="excluded.from.compilation.java_tangshi"/>
+        </javac2>
+
+        <copy todir="${java_tangshi.output.dir}">
+            <fileset dir="${module.java_tangshi.basedir}/src/main/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+            <fileset dir="${module.java_tangshi.basedir}/src/main/resources">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="compile.module.java_tangshi.tests" depends="register.custom.compilers,compile.module.java_tangshi.production" description="compile module java_tangshi; test classes" unless="skip.tests">
+        <mkdir dir="${java_tangshi.testoutput.dir}"/>
+        <javac2 destdir="${java_tangshi.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.java_tangshi}/javac">
+            <compilerarg line="${compiler.args.java_tangshi}"/>
+            <bootclasspath refid="java_tangshi.module.bootclasspath"/>
+            <classpath refid="java_tangshi.module.classpath"/>
+            <src refid="java_tangshi.module.test.sourcepath"/>
+            <patternset refid="excluded.from.compilation.java_tangshi"/>
+        </javac2>
+
+        <copy todir="${java_tangshi.testoutput.dir}">
+            <fileset dir="${module.java_tangshi.basedir}/src/test/java">
+                <patternset refid="compiler.resources"/>
+                <type type="file"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean.module.java_tangshi" description="cleanup module">
+        <delete dir="${java_tangshi.output.dir}"/>
+        <delete dir="${java_tangshi.testoutput.dir}"/>
+    </target>
+</project>

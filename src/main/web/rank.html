@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>柱状图</title>
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/echarts-wordcloud.min.js"></script>
+
+<script>
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if(r!=null)return unescape(r[2]); return null;
+    }
+</script>
+<script>
+    var condition=GetQueryString('condition');
+    $.ajax(
+        {
+            method: "get",  // 发起 ajax 请求时，使用什么 http 方法
+            url: "rank?condition="+condition,   // 请求哪个 url
+            dataType: "json",   // 返回的数据当成什么格式解析
+            success: function (data) {  // 成功后，执行什么方法
+                var names = [];
+                var counts = [];
+
+                for (var i in data) {
+                    names.push(data[i][0]);
+                    counts.push(data[i][1]);
+                }
+
+                console.log(names);
+                console.log(counts);
+                var myChart = echarts.init(document.getElementById('main'));
+
+                var option = {
+                    // 图标的标题
+                    title: {
+                        text: '创作诗词数量排行榜',
+                    },
+                    tooltip: {},
+                    legend: {
+                        data:['数量'],
+                    },
+                    // 横坐标
+                    xAxis: {
+                        data: names
+                    },
+                    yAxis: {},
+                    series: [
+                        {
+                            name: '数量',
+                            type: 'bar',    // bar 代表柱状图
+                            itemStyle: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        {offset: 0, color: '#83bff6'},
+                                        {offset: 0.5, color: '#188df0'},
+                                        {offset: 1, color: '#188df0'}
+                                    ]
+                                )
+                            },
+                            emphasis: {
+                                itemStyle: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            {offset: 0, color: '#2378f7'},
+                                            {offset: 0.7, color: '#2378f7'},
+                                            {offset: 1, color: '#83bff6'}
+                                        ]
+                                    )
+                                }
+                            },
+                            data: counts
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+        }
+    );
+</script>
+</body>
+</html>

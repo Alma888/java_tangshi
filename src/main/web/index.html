@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>唐诗可视化</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="application/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript" src="js/echarts.min.js"></script>
+    <script type="application/javascript" src="js/echarts-gl.min.js"></script>
+    <script type="application/javascript" src="js/echarts-wordcloud.min.js"></script>
+    <script type="application/javascript" src="js/index.js"></script>
+</head>
+
+<body id="blog-article-sidebar">
+<!-- header start -->
+<header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+    <div  class="am-u-sm-8 am-u-sm-centered">
+        <img width="300" src="images/tang.jpg" />
+    </div>
+</header>
+
+
+<!-- nav start -->
+<nav class="am-g am-g-fixed blog-fixed blog-nav">
+
+    <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+        </ul>
+        <form class="am-topbar-form am-topbar-right am-form-inline" method="GET" action="http://localhost:8888/tangshi01-1.0-SNAPSHOT/rank.html">
+            <div class="am-form-group">
+                <input type="text" name="condition"  class="am-form-field am-input-sm">
+            </div>
+            <div class="am-form-group">
+                <input type="submit"   value="创作数量排行榜"  class="am-form-field am-input-sm"/>
+            </div>
+        </form>
+
+        <form class="am-topbar-form am-topbar-right am-form-inline" method="GET" action="http://localhost:8888/tangshi01-1.0-SNAPSHOT/words.html">
+            <div class="am-form-group">
+                <input type="text" name="count"  class="am-form-field am-input-sm" class="am-form-field am-input-sm">
+            </div>
+            <div class="am-form-group">
+                <input type="submit"  value="诗词用词云图" class="am-form-field am-input-sm"/>
+            </div>
+        </form>
+
+        <form class="am-topbar-form am-topbar-right am-form-inline" method="GET" action="http://localhost:8888/tangshi01-1.0-SNAPSHOT/circle.html">
+            <div class="am-form-group">
+                <input type="text" name="condition"  class="am-form-field am-input-sm" class="am-form-field am-input-sm">
+            </div>
+            <div class="am-form-group">
+                <input type="submit"  value=创作数量分布图 class="am-form-field am-input-sm"/>
+            </div>
+        </form>
+    </div>
+</nav>
+</body>
+</html>
